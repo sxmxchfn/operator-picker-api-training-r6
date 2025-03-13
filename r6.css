@@ -1,0 +1,667 @@
+/* ==================== */
+/* RESET AND BASE STYLES */
+/* ==================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+  background-color: transparent;
+}
+
+body {
+  font-family: "D-DIN Condensed", sans-serif;
+  line-height: 1.6;
+  font-weight: 700;
+  font-size: 1.25rem;
+  background-color: #f4f4f4;
+  background-image: url(https://i.redd.it/xbpn74gyki7y.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* ==================== */
+/* ТИПОГРАФИЯ */
+/* ==================== */
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.17em;
+}
+
+p {
+  text-align: center;
+  color: #f4f4f4;
+  font-weight: 100;
+  font-size: 0.85em;
+  display: flex;
+}
+
+/* ==================== */
+/* РАЗМЕТКА */
+/* ==================== */
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0px auto;
+}
+
+.heading {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ==================== */
+/* НАВИГАЦИЯ */
+/* ==================== */
+
+.gameNavigationMenu {
+  display: flex;
+  padding: 10px 15px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  background-color: #222222;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.gameNavigationMenu-logo {
+  margin-bottom: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.gameNavigationMenu-logo img {
+  width: 180px;
+  vertical-align: middle;
+}
+
+.gameNavigationMenu-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.gameNavigationMenu-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  display: block;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 0px;
+  border-radius: 4px;
+}
+
+.gameNavigationMenu-link:hover {
+  color: #00d9ff;
+  transition: color 0.3s ease;
+}
+
+.gameNavigationMenu-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  transition: width 0.3s ease;
+}
+
+.gameNavigationMenu-link.active {
+  color: #00d9ff;
+}
+
+.gameNavigationMenu-link.active::after {
+  width: 100%;
+}
+
+.buy-btn:hover {
+  background-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.buy-btn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0)
+  );
+  transition: height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.buy-btn:hover::after {
+  height: 50%;
+  opacity: 1;
+}
+
+/* ==================== */
+/* ЗАГОЛОВОК НАД КАРТОЧКАМИ */
+/* ==================== */
+.heading-operators {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.heading-operators > h2 {
+  font-size: 2.75em;
+  font-style: italic;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+/* ==================== */
+/* ВЫБОР СТИЛЯ ИГРЫ */
+/* ==================== */
+.playstyle-picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ==================== */
+/* СТИЛИ КНОПОК */
+/* ==================== */
+.r6-btn,
+.specialty-btn {
+  display: flex;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin: 5px;
+  width: auto;
+  min-width: 150px;
+  font-family: "D-DIN Condensed", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.specialty-btn.specialty-active {
+  background-color: #ffffff;
+  color: #000;
+  font-weight: bold;
+}
+
+.specialty-btn.visible {
+  display: flex;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.btn-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.r6-btn {
+  background-color: #2499ff;
+  color: rgb(0, 0, 0);
+  border: none;
+  white-space: nowrap;
+  padding: 15px 20px;
+  font-size: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 6px solid transparent;
+}
+
+.r6-btn.active {
+  transform: scale(1.2);
+  border-bottom: 5px solid #00d9ff;
+}
+
+.r6-btn.active span {
+  color: #000;
+}
+
+.r6-btn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: linear-gradient(to top, #00d9ff, #00d9ff91, rgba(0, 123, 255, 0));
+  transition: height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.r6-btn span {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.r6-btn:hover {
+  border-bottom-color: #00ffff;
+}
+
+.r6-btn:hover span {
+  transform: scale(1.1);
+}
+
+.r6-btn:hover::after {
+  height: 50%;
+  opacity: 1;
+}
+
+/* ==================== */
+/* UNDERBTN */
+/* ==================== */
+.underbtn {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: #f4f4f4;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.9em;
+  margin-top: 0.5em;
+}
+
+#more-filter {
+  background-color: transparent;
+  border: none;
+  color: #f4f4f4;
+  cursor: pointer;
+  padding: 5px 35px 5px 10px;
+  position: relative;
+  transition: all 0.3s ease;
+  font-family: "D-DIN Condensed", sans-serif;
+  font-size: 1.5em;
+  font-weight: 400;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+#more-filter:hover {
+  color: #00ffff;
+}
+
+#more-filter:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* ==================== */
+/* СТИЛЬ ДЛЯ ФИЛЬТРОВ ОПЕРАТОРА */
+/* ==================== */
+.f-operator {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.specialty-btn {
+  display: none;
+  flex: 0 1 auto;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 1.2rem;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.specialty-active {
+  flex: 0 1 auto;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 1.2rem;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.specialty-btn.clear {
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+}
+
+.specialty-btn.clear:hover {
+  background-color: rgb(153, 153, 153);
+  color: #ffffff;
+}
+
+.specialty-btn:hover {
+  background-color: rgb(141, 141, 141);
+  border-color: #ffffff;
+  color: #000000;
+}
+
+/* ==================== */
+/* КАРТОЧКИ ОПЕРОВ */
+/* ==================== */
+.operator-profiles {
+  display: flex;
+  width: 100%;
+}
+
+#characters-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 5px;
+  min-height: 50vh;
+}
+
+.operator-card {
+  width: 170px;
+  height: 320px;
+  cursor: pointer;
+  background-color: #4b4b4b86;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 5px 0;
+  z-index: 1;
+  flex: 0 0 auto;
+}
+
+.operator-card:hover {
+  background-color: #0296dbe5;
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+.operator-image {
+  width: 100%;
+  height: 300px;
+  display: block;
+  transform: scale(2.5);
+  transform-origin: center 0%;
+  object-fit: cover;
+  object-position: center 0;
+  transition: transform 0.3s ease;
+}
+
+.operator-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #adadad;
+  transition: background-color 0.3s ease;
+  padding: 5px;
+  color: rgb(0, 0, 0);
+}
+
+.operator-info::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: linear-gradient(to top, #00d9ff, #00d9ff91, rgba(0, 123, 255, 0));
+  transition: height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  z-index: 1;
+}
+
+.operator-card:hover .operator-info {
+  background-color: rgb(0, 255, 213);
+}
+
+.operator-name {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 18px;
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ==================== */
+/* АНИМАЦИИ */
+/* ==================== */
+@keyframes slideDownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* ==================== */
+/* СОЦИАЛЬНЫЕ СЕТИ */
+/* ==================== */
+.social-footer {
+  width: 100%;
+  background-color: #000000;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  position: relative; /* Изменено с fixed на relative */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  margin-top: 40px; /* Добавлен отступ сверху */
+}
+
+.social-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  max-width: 1400px;
+  width: 100%;
+  padding: 0 20px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.content-wrapper {
+  padding-bottom: 0;
+  min-height: calc(100vh - 120px);
+}
+
+.social-link {
+  color: #ffffff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: #00d9ff;
+}
+
+.social-icon {
+  width: 64px;
+  height: 64px;
+  margin-right: 8px;
+}
+
+.social-text {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1.5rem;
+}
+
+/* ==================== */
+/* MEDIA QUERIES */
+/* ==================== */
+@media only screen and (max-width: 480px) {
+  body {
+    overflow-y: auto;
+  }
+  .specialty-btn {
+    font-size: 1.25rem;
+    padding: 8px 15px;
+  }
+
+  .operator-card {
+    width: 120px;
+    height: 260px;
+  }
+  #characters-container {
+    justify-content: center;
+    gap: 5px;
+  }
+  .gameNavigationMenu {
+    padding: 10px 15px;
+  }
+
+  .gameNavigationMenu-logo img {
+    width: 180px;
+  }
+
+  .gameNavigationMenu-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .gameNavigationMenu-link {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    font-size: 2em;
+  }
+  .r6-btn,
+  .specialty-btn {
+    font-size: 1.5rem;
+  }
+
+  .operator-card {
+    width: 130px;
+    height: 280px;
+  }
+
+  #characters-container {
+    justify-content: center;
+  }
+
+  .gameNavigationMenu {
+    flex-direction: row;
+    padding: 0 20px;
+  }
+
+  .gameNavigationMenu-logo {
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+
+  .gameNavigationMenu-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+  }
+
+  .gameNavigationMenu-link {
+    width: auto;
+    padding: 5px 10px;
+  }
+
+  .social-container {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .social-link {
+    font-size: 1rem;
+  }
+
+  .social-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  body {
+    font-size: 28px;
+  }
+}
